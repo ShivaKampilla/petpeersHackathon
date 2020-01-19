@@ -16,7 +16,7 @@ namespace PetPeers.Repo.Service
             {
 
                 var dbContext = new AquanautDBContext();
-                var userExists = dbContext.Users.FirstOrDefault(x => x.LastName == u.LastName && x.FirstName == u.FirstName);
+                var userExists = dbContext.Users.FirstOrDefault(x => x.Userid ==u.Userid);
                 if (userExists == null)
                 {
                     dbContext.Users.Add(u);
@@ -29,7 +29,7 @@ namespace PetPeers.Repo.Service
             }
             catch (Exception ex)
             {
-                Startup.Logger.Error($"Error getting Pet {ex.Message}");
+                Startup.Logger?.Error($"Error getting Pet {ex.Message}");
                 throw;
             }
            
@@ -47,7 +47,7 @@ namespace PetPeers.Repo.Service
             }
             catch (Exception ex)
             {
-                Startup.Logger.Error($"Error getting Pet {ex.Message}");
+                Startup.Logger?.Error($"Error getting Pet {ex.Message}");
                 throw;
             }
 
